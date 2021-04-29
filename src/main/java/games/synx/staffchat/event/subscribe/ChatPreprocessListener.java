@@ -1,5 +1,6 @@
 package games.synx.staffchat.event.subscribe;
 
+import com.velocitypowered.api.event.PostOrder;
 import com.velocitypowered.api.event.Subscribe;
 import com.velocitypowered.api.event.player.PlayerChatEvent;
 import games.synx.staffchat.cache.StaffChatCache;
@@ -7,7 +8,7 @@ import games.synx.staffchat.util.trevor.MessagePayload;
 
 public class ChatPreprocessListener {
 
-    @Subscribe
+    @Subscribe(order = PostOrder.FIRST)
     public void onChatEvent(PlayerChatEvent event) {
 
         if(!event.getPlayer().hasPermission("staffchat.command.use")) {
