@@ -1,12 +1,12 @@
 plugins {
     id 'java'
+    id 'com.github.johnrengelman.shadow' version '5.2.0'
 }
 
 group = 'games.synx'
 version = '1.0-SNAPSHOT'
 
-sourceCompatibility = '1.8'
-targetCompatibility = '1.8'
+sourceCompatibility = targetCompatibility = JavaVersion.VERSION_11
 
 repositories {
     mavenCentral()
@@ -41,3 +41,12 @@ task processSources(type: Sync) {
 }
 
 compileJava.source = processSources.outputs
+
+shadowJar {
+
+}
+
+jar.archiveName("StaffChat-${project.version}-BUILD.jar")
+
+shadowJar.archiveName("StaffChat-${project.version}.jar")
+tasks.build.dependsOn tasks.shadowJar
