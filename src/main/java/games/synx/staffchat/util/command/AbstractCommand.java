@@ -1,6 +1,7 @@
 package games.synx.staffchat.util.command;
 
 import com.velocitypowered.api.command.SimpleCommand;
+import games.synx.staffchat.config.Config;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextColor;
 
@@ -19,10 +20,7 @@ public abstract class AbstractCommand implements SimpleCommand {
 
         if(!invocation.source().hasPermission(this.permission)) {
 
-            Component component = Component.text("You do not have permission to use this command!")
-                    .color(TextColor.color(255, 0, 0));
-
-            invocation.source().sendMessage(component);
+            invocation.source().sendMessage(Config.getInstance().getConfig().getMessages().getCmdNoPermissionMsg());
             return;
         }
 

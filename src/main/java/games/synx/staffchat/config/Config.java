@@ -1,8 +1,11 @@
 package games.synx.staffchat.config;
 
+import games.synx.staffchat.util.message.MessageUtil;
+import net.kyori.adventure.text.Component;
 import org.spongepowered.configurate.BasicConfigurationNode;
 import org.spongepowered.configurate.gson.GsonConfigurationLoader;
 import org.spongepowered.configurate.objectmapping.ConfigSerializable;
+import org.spongepowered.configurate.objectmapping.meta.Setting;
 import org.spongepowered.configurate.reference.ConfigurationReference;
 import org.spongepowered.configurate.reference.ValueReference;
 import org.spongepowered.configurate.reference.WatchServiceListener;
@@ -54,13 +57,32 @@ public class Config {
     @ConfigSerializable
     public static class Settings {
 
+        @Setting
+        private Messages messages = new Messages();
+
+        public Messages getMessages() {
+            return this.messages;
+        }
+
+        @ConfigSerializable
+        public static class Messages {
+
+            @Setting private String cmdNoPermission = "<red>You do not have permission to use this command!";
+
+
+            public Component getCmdNoPermissionMsg() {
+                return MessageUtil.parse(this.cmdNoPermission);
+            }
+
+        }
+
     }
 
     public Settings getConfig() {
         return (Settings) this.config.get();
     }
 
-    public Config getInstance() {
+    public static Config getInstance() {
         return instance;
     }
 
