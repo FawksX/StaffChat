@@ -14,7 +14,7 @@ import java.util.Optional;
 
 public class StaffChatCommand extends AbstractCommand {
 
-    protected StaffChatCommand() {
+    public StaffChatCommand() {
         super("staffchat.command.use");
     }
 

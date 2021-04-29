@@ -8,6 +8,7 @@ import com.velocitypowered.api.plugin.Dependency;
 import com.velocitypowered.api.plugin.Plugin;
 import com.velocitypowered.api.plugin.annotation.DataDirectory;
 import com.velocitypowered.api.proxy.ProxyServer;
+import games.synx.staffchat.command.StaffChatCommand;
 import games.synx.staffchat.config.Config;
 import games.synx.staffchat.event.subscribe.ChatPreprocessListener;
 import games.synx.staffchat.util.trevor.IntercomListener;
@@ -51,6 +52,8 @@ public class StaffChatPlugin {
 
         this.proxyServer.getEventManager().register(this, new IntercomListener());
         this.proxyServer.getEventManager().register(this, new ChatPreprocessListener());
+
+        this.proxyServer.getCommandManager().register("sc", new StaffChatCommand(), "staffchat", "a");
 
         TrevorService.getAPI().getDatabase().getIntercom().add(RedisChannels.STAFFCHAT_CHANNEL);
 
