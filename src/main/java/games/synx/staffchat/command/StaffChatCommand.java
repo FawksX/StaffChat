@@ -52,9 +52,4 @@ public class StaffChatCommand extends AbstractCommand {
 
         new MessagePayload(player.getUsername(), message, server.getServerInfo().getName()).post();
     }
-
-    @Override
-    public List<String> suggest(Invocation invocation) {
-        return super.suggest(invocation);
-    }
 }
