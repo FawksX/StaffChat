@@ -68,10 +68,26 @@ public class Config {
         public static class Messages {
 
             @Setting private String cmdNoPermission = "<red>You do not have permission to use this command!";
+            @Setting private String cmdStaffChatToggled = "<green>You have successfully toggled staff chat!";
+            @Setting private String cmdStaffChatUntoggled = "<red> you have successfully untoggled staff chat!";
+
+            @Setting private String msgFormat = "<gray>[<red>%server%<gray>] <yellow>%player%<gray>: <green>%msg%";
 
 
             public Component getCmdNoPermissionMsg() {
                 return MessageUtil.parse(this.cmdNoPermission);
+            }
+
+            public Component getCmdStaffChatToggledMsg() {
+                return MessageUtil.parse(this.cmdStaffChatToggled);
+            }
+
+            public Component getCmdStaffChatUntoggledMsg() {
+                return MessageUtil.parse(this.cmdStaffChatUntoggled);
+            }
+
+            public String getMsgFormat() {
+                return this.msgFormat;
             }
 
         }

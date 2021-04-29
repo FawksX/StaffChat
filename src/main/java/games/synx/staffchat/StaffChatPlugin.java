@@ -35,10 +35,12 @@ public class StaffChatPlugin {
     @Inject @DataDirectory
     private Path pluginDirectory;
 
+    private static StaffChatPlugin instance;
     private static Config config;
 
     @Subscribe
     public void onProxyInitialization(ProxyInitializeEvent event) {
+        instance = this;
 
         if(!this.pluginDirectory.toFile().exists()) {
             this.pluginDirectory.toFile().mkdir();
@@ -52,7 +54,15 @@ public class StaffChatPlugin {
 
     }
 
+    public static StaffChatPlugin getInstance() {
+        return instance;
+    }
+
     public static Config getConfig() {
         return config;
+    }
+
+    public ProxyServer getProxyServer() {
+        return this.proxyServer;
     }
 }
