@@ -1,5 +1,6 @@
 package games.synx.staffchat;
 
+import co.schemati.trevor.api.TrevorService;
 import com.google.inject.Inject;
 import com.velocitypowered.api.event.proxy.ProxyInitializeEvent;
 import com.velocitypowered.api.event.Subscribe;
@@ -9,6 +10,7 @@ import com.velocitypowered.api.plugin.annotation.DataDirectory;
 import com.velocitypowered.api.proxy.ProxyServer;
 import games.synx.staffchat.config.Config;
 import games.synx.staffchat.util.trevor.IntercomListener;
+import games.synx.staffchat.util.trevor.RedisChannels;
 import org.slf4j.Logger;
 
 import java.nio.file.Path;
@@ -45,6 +47,8 @@ public class StaffChatPlugin {
         config = new Config(this.pluginDirectory);
 
         this.proxyServer.getEventManager().register(this, new IntercomListener());
+
+        TrevorService.getAPI().getDatabase().getIntercom().add(RedisChannels.STAFFCHAT_CHANNEL);
 
     }
 
