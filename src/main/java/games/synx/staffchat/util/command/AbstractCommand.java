@@ -24,7 +24,7 @@ public abstract class AbstractCommand implements SimpleCommand {
 
     }
 
-    abstract void onCommand(Invocation invocation);
+    protected abstract void onCommand(Invocation invocation);
 
     /**
      * This has been marked as true so that the command does not get passed
