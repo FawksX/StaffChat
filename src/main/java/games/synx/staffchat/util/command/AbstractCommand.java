@@ -2,10 +2,6 @@ package games.synx.staffchat.util.command;
 
 import com.velocitypowered.api.command.SimpleCommand;
 import games.synx.staffchat.config.Config;
-import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.format.TextColor;
-
-import java.util.List;
 
 public abstract class AbstractCommand implements SimpleCommand {
 
