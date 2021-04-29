@@ -29,6 +29,7 @@ dependencies {
     annotationProcessor 'com.velocitypowered:velocity-api:1.1.5'
 
     compile 'org.spongepowered:configurate-gson:4.0.0'
+    compile "net.kyori:adventure-text-minimessage:4.1.0-SNAPSHOT"
 
     compileOnly(fileTree(dir: "libs"))
 }
@@ -49,6 +50,8 @@ shadowJar {
     relocate 'org.spongepowered.configurate', 'games.synx.libs.configurate'
     relocate 'io.leangen.geantyref', 'games.synx.libs.geantyref'
     relocate 'org.checkerframework', 'games.synx.libs.checkerframework'
+
+    relocate 'net.kyori', 'games.synx.libs.net.kyori'
 
 }
 
